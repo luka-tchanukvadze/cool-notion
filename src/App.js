@@ -1,25 +1,118 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "react-mde/lib/styles/css/react-mde-all.css";
+import Editor from "./components/ForNotes/Editor";
+import Sidebar from "./components/ForNotes/Sidebar";
+import CreateNotes from "./components/CreateNotes";
+// import Navigation from "./components/Navigation";
+import Header from "./components/Header";
+import Bin from "./components/menus/Bin";
+import { v4 as uuidv4 } from "uuid";
+import Split from "react-split";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import FuturePlans from "./components/Schedule/FuturePlans";
 
-function App() {
+export default function App() {
+  const [notes, setNotes] = useState(
+    () => JSON.parse(localStorage.getItem("notes")) || []
+  );
+
+  const [currentNoteId, setCurrentNoteId] = useState(
+    (notes[0] && notes[0].id) || ""
+  );
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  function createNewNote() {
+    const newNote = {
+      id: uuidv4(),
+      body: "# Type your markdown note's title here",
+    };
+    setNotes((prevNotes) => [newNote, ...prevNotes]);
+    setCurrentNoteId(newNote.id);
+  }
+
+  function updateNote(text) {
+    // Put the most recently-modified note at the top
+    setNotes((oldNotes) => {
+      const newArray = [];
+      for (let i = 0; i < oldNotes.length; i++) {
+        const oldNote = oldNotes[i];
+        if (oldNote.id === currentNoteId) {
+          newArray.unshift({ ...oldNote, body: text });
+        } else {
+          newArray.push(oldNote);
+        }
+      }
+      return newArray;
+    });
+  }
+
+  function deleteNote(event, noteId) {
+    event.stopPropagation();
+    setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
+  }
+
+  function findCurrentNote() {
+    return (
+      notes.find((note) => {
+        return note.id === currentNoteId;
+      }) || notes[0]
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <main>
+        {notes.length > 0 ? (
+          <Split sizes={[30, 70]} direction="horizontal" className="split">
+            <div className="nav-container">
+              <Sidebar
+                notes={notes}
+                currentNote={findCurrentNote()}
+                setCurrentNoteId={setCurrentNoteId}
+                newNote={createNewNote}
+                deleteNote={deleteNote}
+              />
+              {/* <Navigation /> */}
+              <Bin />
+            </div>
+            {currentNoteId && notes.length > 0 && (
+              <div className="header-container">
+                <Header currentNote={findCurrentNote()} />
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <Editor
+                        currentNote={findCurrentNote()}
+                        updateNote={updateNote}
+                      />
+                    }
+                  />
+                  <Route path="/futurePlans" element={<FuturePlans />} />
+                </Routes>
+              </div>
+            )}
+          </Split>
+        ) : (
+          <Split sizes={[50, 50]} direction="horizontal" className="split">
+            <div className="nav-container-2">
+              <FuturePlans />
+            </div>
+
+            <div className="editor-side">
+              <div className="header-container-2">
+                <Header />
+              </div>
+
+              <CreateNotes createNewNote={createNewNote} />
+            </div>
+          </Split>
+        )}
+      </main>
+    </BrowserRouter>
   );
 }
-
-export default App;
