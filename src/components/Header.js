@@ -19,7 +19,7 @@ function Header(props) {
     <header className="header">
       <div className="header-text">
         {props.currentNote
-          ? props.currentNote.body.split("\n")[0]
+          ? props.currentNote.body.split("\n")[0] || "Untitled"
           : "No Note Selected"}
       </div>
       <div className="for-header-menu" onClick={handleClick}>

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Sidebar(props) {
+  const route = window.location.href.toString().split(window.location.host)[1];
+  console.log(route);
   const noteElements = props.notes.map((note, index) => (
     <div key={note.id}>
       <Link className="link-to-editor" to="/">
@@ -11,7 +13,9 @@ function Sidebar(props) {
           }`}
           onClick={() => props.setCurrentNoteId(note.id)}
         >
-          <h4 className="text-snippet">{note.body.split("\n")[0]}</h4>
+          <h4 className="text-snippet">
+            {note.body.split("\n")[0] || "Untitled"}
+          </h4>
 
           <button
             className="delete-btn"
