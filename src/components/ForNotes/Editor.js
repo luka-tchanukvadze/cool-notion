@@ -59,7 +59,11 @@ function Editor(props) {
           />
         ) : (
           // <div onClick={toggleEditMode}>{props.currentNote.body}</div>
-          <div onClick={toggleEditMode} className="app-main-note-preview">
+          <div
+            onClick={toggleEditMode}
+            className="app-main-note-preview"
+            style={{ whiteSpace: "pre-line" }}
+          >
             <h1 className="preview-title">{props.currentNote.title}</h1>
             <ReactMarkdown className="markdown-preview">
               {props.currentNote.body}
