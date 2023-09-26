@@ -29,6 +29,7 @@ export default function App() {
     const newNote = {
       id: uuidv4(),
       body: "# Type your markdown note's title here",
+      // textAreas: [],
     };
     setNotes((prevNotes) => [newNote, ...prevNotes]);
     setCurrentNoteId(newNote.id);
@@ -42,6 +43,7 @@ export default function App() {
         const oldNote = oldNotes[i];
         if (oldNote.id === currentNoteId) {
           newArray.unshift({ ...oldNote, body: text });
+          // newArray.unshift({ ...oldNote, body: text, textAreas: [text] });
         } else {
           newArray.push(oldNote);
         }
