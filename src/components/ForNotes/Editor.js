@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,6 +11,10 @@ function Editor(props) {
 
   const [editing, setEditing] = useState(false);
   const textareaRef = useRef(null);
+  const [newTextarea, setNewTextarea] = useState(""); // Track the content of the new textarea
+
+  const textAreas = props.currentNote.textAreas;
+  const setTextAreas = props.updateTextarea;
 
   const addTextarea = () => {
     const setTextAreas = (prev) => [
@@ -28,6 +32,7 @@ function Editor(props) {
     } else {
       document.removeEventListener("click", handleOutsideClick);
     }
+
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
@@ -44,11 +49,29 @@ function Editor(props) {
     setEditing(!editing);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e, index) => {
+    if (e.key === "Backspace") {
+      setTextAreas(textAreas.filter((label, i) => i !== index));
+    }
     if (e.key === "Enter") {
-      addTextarea();
+      // Create a new textarea with the content of the newTextarea state
+      setTextAreas([...textAreas, newTextarea]);
+
+      // Clear the newTextarea state to start with an empty textarea next time
+      setNewTextarea("");
+
+      e.preventDefault(); // Prevent the default Enter key behavior (newline)
     }
   };
+  const handleTextareaChange = (e, index) => {
+    setTextAreas(
+      textAreas.map((txt, i) => (i === index ? e.target.value : txt))
+    );
+  };
+
+  const lastTextarea = useCallback((textarea) => {
+    if (textarea) textarea.focus();
+  }, []);
 
   return (
     <>
@@ -60,24 +83,27 @@ function Editor(props) {
                 {editing ? (
                   <div ref={textareaRef} onClick={handleOutsideClick}>
                     <textarea
-                      style={{
-                        width: "100%",
-                        minHeight: "300px",
-                        resize: "none",
-                        color: "darkslategray",
-                        backgroundColor: "transparent",
-                        // overflow: "hidden",
-                      }}
-                      // ref={textareaRef} // Assign the ref to the textarea element
+                      rows={1}
+                      style={{ width: "400px", height: "100px" }}
                       placeholder="Write your note here..."
                       value={props.currentNote.body}
                       onChange={(e) => {
                         props.updateNote(e.target.value);
                       }}
-                      // onClick={handleOutsideClick}
                       onKeyDown={handleKeyPress}
                     />
-                    <div></div>
+                    {textAreas.map((label, index) => (
+                      <div key={index}>
+                        <textarea
+                          onKeyDown={(e) =>
+                            handleKeyPress(e, label === "" ? index : undefined)
+                          }
+                          ref={lastTextarea}
+                          onChange={(e) => handleTextareaChange(e, index)}
+                          value={label}
+                        />
+                      </div>
+                    ))}
                   </div>
                 ) : (
                   // <div onClick={toggleEditMode}>{props.currentNote.body}</div>
@@ -91,7 +117,7 @@ function Editor(props) {
                         {props.currentNote.title}
                       </h1>
                       <ReactMarkdown className="markdown-preview">
-                        {props.currentNote.body}
+                        {`${props.currentNote.body}\n${textAreas.join("\n")}`}
                       </ReactMarkdown>
                     </div>
                     {/* <div>
@@ -115,8 +141,9 @@ function Editor(props) {
 }
 
 // export default Editor;
+
 // import ReactMarkdown from "react-markdown";
-// import React, { useState, useRef, useEffect } from "react";
+// import React, { useState, useRef, useCallback, useEffect } from "react";
 
 // function Editor(props) {
 //   if (!props.currentNote)
@@ -125,8 +152,10 @@ function Editor(props) {
 //   const [editing, setEditing] = useState(false);
 //   const [editedContent, setEditedContent] = useState(props.currentNote.body);
 //   const textareaRef = useRef(null);
-//   const [textAreas, setTextAreas] = useState([]);
 //   const [newTextarea, setNewTextarea] = useState(""); // Track the content of the new textarea
+
+//   const textAreas = props.currentNote.textAreas;
+//   const setTextAreas = props.updateTextarea;
 
 //   useEffect(() => {
 //     if (editing) {
@@ -151,13 +180,14 @@ function Editor(props) {
 //     setEditing(!editing);
 //   };
 
-//   const handleKeyPress = (e) => {
+//   const handleKeyPress = (e, index) => {
+//     if (e.key === "Backspace") {
+//       setTextAreas(textAreas.filter((label, i) => i !== index));
+//     }
+
 //     if (e.key === "Enter") {
 //       // Create a new textarea with the content of the newTextarea state
-//       setTextAreas([
-//         ...textAreas,
-//         <textarea key={textAreas.length} value={newTextarea} />,
-//       ]);
+//       setTextAreas([...textAreas, newTextarea]);
 
 //       // Clear the newTextarea state to start with an empty textarea next time
 //       setNewTextarea("");
@@ -166,10 +196,15 @@ function Editor(props) {
 //     }
 //   };
 
-//   const handleNewTextareaChange = (e) => {
-//     // Update the content of the new textarea
-//     setNewTextarea(e.target.value);
+//   const handleTextareaChange = (e, index) => {
+//     setTextAreas(
+//       textAreas.map((txt, i) => (i === index ? e.target.value : txt))
+//     );
 //   };
+
+//   const lastTextarea = useCallback((textarea) => {
+//     if (textarea) textarea.focus();
+//   }, []);
 
 //   return (
 //     <div className="app-main">
@@ -186,16 +221,18 @@ function Editor(props) {
 //               }}
 //               onKeyDown={handleKeyPress}
 //             />
-//             {textAreas.map((textarea, index) => (
-//               <div key={index}>{textarea}</div>
+//             {textAreas.map((label, index) => (
+//               <div key={index}>
+//                 <textarea
+//                   onKeyDown={(e) =>
+//                     handleKeyPress(e, label === "" ? index : undefined)
+//                   }
+//                   ref={lastTextarea}
+//                   onChange={(e) => handleTextareaChange(e, index)}
+//                   value={label}
+//                 />
+//               </div>
 //             ))}
-//             {/* The new textarea */}
-//             <textarea
-//               placeholder="New Textarea"
-//               value={newTextarea}
-//               onChange={handleNewTextareaChange}
-//               onKeyDown={handleKeyPress}
-//             />
 //           </div>
 //         ) : (
 //           // <div onClick={toggleEditMode}>{props.currentNote.body}</div>
@@ -207,7 +244,8 @@ function Editor(props) {
 //             >
 //               <h1 className="preview-title">{props.currentNote.title}</h1>
 //               <ReactMarkdown className="markdown-preview">
-//                 {props.currentNote.body}
+//                 {`luka`}
+//                 {/* {`${props.currentNote.body}\n${textAreas.join("\n")}`} */}
 //               </ReactMarkdown>
 //             </div>
 //           </>
