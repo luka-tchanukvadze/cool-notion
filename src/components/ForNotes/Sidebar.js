@@ -52,6 +52,7 @@ function Sidebar(props) {
           <h3 style={{ marginBottom: "0", color: "#0D6EFD" }}>Notes</h3>
 
           <svg
+            style={{ cursor: "pointer" }}
             onClick={props.newNote}
             xmlns="http://www.w3.org/2000/svg"
             width="17"

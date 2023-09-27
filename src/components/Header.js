@@ -26,6 +26,7 @@ function Header(props) {
       </div>
       <div className="for-header-menu" onClick={handleClick}>
         <svg
+          style={{ cursor: "pointer" }}
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
