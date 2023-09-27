@@ -118,13 +118,18 @@ export default function App() {
           </Split>
         ) : (
           <Split sizes={[50, 50]} direction="horizontal" className="split">
-            <div className="nav-container-2">
+            <div style={{ marginTop: "7.5rem" }} className="nav-container-2">
               <FuturePlans />
             </div>
 
             <div className="editor-side">
               <div className="header-container-2">
-                <Header />
+                <Header
+                  currentNote={findCurrentNote()}
+                  darkMode={darkMode}
+                  setDarkMode={setDarkMode}
+                  toggleDarkMode={toggleDarkMode}
+                />
               </div>
 
               <CreateNotes createNewNote={createNewNote} />
