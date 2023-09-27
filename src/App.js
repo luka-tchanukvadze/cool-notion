@@ -67,9 +67,18 @@ export default function App() {
     );
   }
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  function toggleDarkMode() {
+    setDarkMode((prevMode) => !prevMode);
+  }
+
   return (
     <BrowserRouter>
-      <main>
+      <main
+        className={`${darkMode ? "dark" : ""}`}
+        style={{ backgroundColor: darkMode ? "#191D1D" : "" }}
+      >
         {notes.length > 0 ? (
           <Split sizes={[30, 70]} direction="horizontal" className="split">
             <div className="nav-container">
@@ -82,11 +91,16 @@ export default function App() {
               />
 
               {/* <Navigation /> */}
-              <Bin />
+              {/* <Bin /> */}
             </div>
             {currentNoteId && notes.length > 0 && (
               <div className="header-container">
-                <Header currentNote={findCurrentNote()} />
+                <Header
+                  currentNote={findCurrentNote()}
+                  darkMode={darkMode}
+                  setDarkMode={setDarkMode}
+                  toggleDarkMode={toggleDarkMode}
+                />
                 <Routes>
                   <Route
                     path="/"

@@ -7,11 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Header(props) {
   const [menu, setMenu] = useState(false);
 
-  const [darkMode, setDarkMode] = useState(false);
+  // const [myDarkMode, setMyDarkMode] = useState(props.darkMode);
 
-  function toggleDarkMode() {
-    setDarkMode((prevMode) => !prevMode);
-  }
+  // function myToggleDarkMode() {
+  //   props.setDarkMode((prevMode) => !prevMode);
+  // }
 
   function handleClick() {
     setMenu((prev) => !prev);
@@ -31,7 +31,7 @@ function Header(props) {
           width="16"
           height="16"
           fill="#0D6EFD"
-          class="bi bi-list"
+          className="bi bi-list"
           viewBox="0 0 16 16"
         >
           <path
@@ -41,7 +41,11 @@ function Header(props) {
         </svg>
         {menu && (
           <div className="dark-toggle">
-            <HeaderMenu darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <HeaderMenu
+              darkMode={props.darkMode}
+              toggleDarkMode={props.toggleDarkMode}
+              onClick={props.toggleDarkMode}
+            />
           </div>
         )}
       </div>

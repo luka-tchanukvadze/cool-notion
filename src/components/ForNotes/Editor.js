@@ -62,8 +62,10 @@ function Editor(props) {
                     <textarea
                       style={{
                         width: "100%",
-                        minHeight: "500px",
+                        minHeight: "300px",
                         resize: "none",
+                        color: "darkslategray",
+                        backgroundColor: "transparent",
                         // overflow: "hidden",
                       }}
                       // ref={textareaRef} // Assign the ref to the textarea element
@@ -83,7 +85,7 @@ function Editor(props) {
                     <div
                       onClick={toggleEditMode}
                       className="app-main-note-preview"
-                      style={{ whiteSpace: "pre-line" }}
+                      style={{ whiteSpace: "pre-line", color: "darkslategray" }}
                     >
                       <h1 className="preview-title">
                         {props.currentNote.title}
