@@ -28,7 +28,11 @@ function NewTodoForm({ onSubmit }) {
           New Item
         </label>
         <Form.Control
-          style={{ color: "#00AAFF" }}
+          style={{
+            color: "#00AAFF",
+            backgroundColor: "#00aaff1a",
+            borderColor: "#00AAFF",
+          }}
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           type="text"
