@@ -11,6 +11,8 @@ import Split from "react-split";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import FuturePlans from "./components/Schedule/FuturePlans";
+// import { Button } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   const [notes, setNotes] = useState(
@@ -78,6 +80,7 @@ export default function App() {
                 newNote={createNewNote}
                 deleteNote={deleteNote}
               />
+
               {/* <Navigation /> */}
               <Bin />
             </div>

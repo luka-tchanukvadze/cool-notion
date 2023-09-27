@@ -1,6 +1,9 @@
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import { useState, useRef, useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function Editor(props) {
   if (!props.currentNote)
@@ -48,49 +51,64 @@ function Editor(props) {
   };
 
   return (
-    <div className="app-main">
-      <div className="app-main-note-edit">
-        {editing ? (
-          <div ref={textareaRef} onClick={handleOutsideClick}>
-            <textarea
-              style={{ width: "400px", height: "100px" }}
-              // ref={textareaRef} // Assign the ref to the textarea element
-              placeholder="Write your note here..."
-              value={props.currentNote.body}
-              onChange={(e) => {
-                props.updateNote(e.target.value);
-              }}
-              // onClick={handleOutsideClick}
-              onKeyDown={handleKeyPress}
-            />
-            <div></div>
-          </div>
-        ) : (
-          // <div onClick={toggleEditMode}>{props.currentNote.body}</div>
-          <>
-            <div
-              onClick={toggleEditMode}
-              className="app-main-note-preview"
-              style={{ whiteSpace: "pre-line" }}
-            >
-              <h1 className="preview-title">{props.currentNote.title}</h1>
-              <ReactMarkdown className="markdown-preview">
-                {props.currentNote.body}
-              </ReactMarkdown>
-            </div>
-            {/* <div>
+    <>
+      <Container>
+        <Row>
+          <Col>
+            <div className="app-main" style={{ minHeight: "40rem" }}>
+              <div className="app-main-note-edit">
+                {editing ? (
+                  <div ref={textareaRef} onClick={handleOutsideClick}>
+                    <textarea
+                      style={{
+                        width: "100%",
+                        minHeight: "500px",
+                        resize: "none",
+                        // overflow: "hidden",
+                      }}
+                      // ref={textareaRef} // Assign the ref to the textarea element
+                      placeholder="Write your note here..."
+                      value={props.currentNote.body}
+                      onChange={(e) => {
+                        props.updateNote(e.target.value);
+                      }}
+                      // onClick={handleOutsideClick}
+                      onKeyDown={handleKeyPress}
+                    />
+                    <div></div>
+                  </div>
+                ) : (
+                  // <div onClick={toggleEditMode}>{props.currentNote.body}</div>
+                  <>
+                    <div
+                      onClick={toggleEditMode}
+                      className="app-main-note-preview"
+                      style={{ whiteSpace: "pre-line" }}
+                    >
+                      <h1 className="preview-title">
+                        {props.currentNote.title}
+                      </h1>
+                      <ReactMarkdown className="markdown-preview">
+                        {props.currentNote.body}
+                      </ReactMarkdown>
+                    </div>
+                    {/* <div>
               <textarea placeholder="outside text area" />
             </div> */}
-          </>
-        )}
-      </div>
-      {/* <div className="app-main-note-preview">
+                  </>
+                )}
+              </div>
+              {/* <div className="app-main-note-preview">
         <h1 className="preview-title">{props.currentNote.title}</h1>
         <ReactMarkdown className="markdown-preview">
           {props.currentNote.body}
         </ReactMarkdown>
       </div> */}
-    </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 

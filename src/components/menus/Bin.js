@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Bin() {
   const [menu, setMenu] = useState(false);
@@ -10,7 +12,9 @@ function Bin() {
 
   return (
     <div className="bin-con" onClick={handleClick}>
-      <div className="bin">Recycle Bin</div>
+      <Button type="button" class="btn btn-outline-secondary">
+        Recycle Bin
+      </Button>
       {menu && (
         <div className="trash-toggle">
           <div>hello</div>

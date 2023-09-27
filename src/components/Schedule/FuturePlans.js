@@ -45,7 +45,12 @@ function FuturePlans() {
   return (
     <div className="con">
       <NewTodoForm onSubmit={addTodo} />
-      <h1 className="header-todo">Future Plans</h1>
+      <h1
+        className="header-todo"
+        style={{ fontWeight: "700", color: "darkslategray" }}
+      >
+        Future Plans
+      </h1>
       <TodoList todos={todos} toggleTodo={toggleTodo} delteTodo={delteTodo} />
     </div>
   );

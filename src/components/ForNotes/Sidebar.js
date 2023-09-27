@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import Stack from "react-bootstrap/Stack";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Sidebar(props) {
   const route = window.location.href.toString().split(window.location.host)[1];
@@ -13,9 +17,22 @@ function Sidebar(props) {
           }`}
           onClick={() => props.setCurrentNoteId(note.id)}
         >
-          <h4 className="text-snippet">
+          {/* <h4 className="text-snippet">
             {note.body.split("\n")[0] || "Untitled"}
-          </h4>
+          </h4> */}
+          <Stack
+            gap={3}
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              color: "#0D6EFD",
+            }}
+          >
+            <div className="p-2 text-snippet">
+              {note.body.split("\n")[0] || "Untitled"}
+            </div>
+          </Stack>
 
           <button
             className="delete-btn"
@@ -32,14 +49,34 @@ function Sidebar(props) {
     <>
       <section className="pane sidebar">
         <div className="sidebar--header">
-          <h3>Notes</h3>
-          <button className="new-note" onClick={props.newNote}>
+          <h3 style={{ marginBottom: "0", color: "#0D6EFD" }}>Notes</h3>
+
+          <svg
+            onClick={props.newNote}
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            fill="#0D6EFD"
+            class="bi bi-plus-lg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+            />
+          </svg>
+
+          {/* <button className="new-note" onClick={props.newNote}>
             +
-          </button>
+          </button> */}
         </div>
         <div className="for-todo">{noteElements}</div>
         <Link to="/futurePlans" className="future-plans">
-          <div className="future-plans-div">Future Plans</div>
+          <div className="future-plans-div">
+            <Button type="button" class="btn btn-xs btn-outline-secondary">
+              Future Plans
+            </Button>
+          </div>
         </Link>
       </section>
     </>
