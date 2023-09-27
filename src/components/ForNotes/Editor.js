@@ -84,7 +84,13 @@ function Editor(props) {
                   <div ref={textareaRef} onClick={handleOutsideClick}>
                     <textarea
                       rows={1}
-                      style={{ width: "400px", height: "100px" }}
+                      style={{
+                        width: "400px",
+                        height: "100px",
+                        backgroundColor: "transparent",
+                        color: "darkslategray",
+                        width: "100%",
+                      }}
                       placeholder="Write your note here..."
                       value={props.currentNote.body}
                       onChange={(e) => {
@@ -98,6 +104,11 @@ function Editor(props) {
                           onKeyDown={(e) =>
                             handleKeyPress(e, label === "" ? index : undefined)
                           }
+                          style={{
+                            backgroundColor: "transparent",
+                            color: "darkslategray",
+                            width: "100%",
+                          }}
                           ref={lastTextarea}
                           onChange={(e) => handleTextareaChange(e, index)}
                           value={label}
