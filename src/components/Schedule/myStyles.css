@@ -6,13 +6,14 @@
 .con{
   min-height: 120vh;
   overflow-y: auto;
-  padding: 2rem; 
+  padding: 2rem;
+  padding-top: 0; 
 }
 
 .new-item-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
 .btn {
@@ -25,7 +26,7 @@
 }
 
 .header-todo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
@@ -35,6 +36,7 @@
   padding: 0;
   margin-left: 1rem;
   list-style: none;
+  font-size: 1.5rem;
 }
 
 .list li:has(input:checked) label {
@@ -50,13 +52,13 @@
 
 .list li {
   display: flex;
-  gap: 0.5rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .list li label {
   display: flex;
-  gap: 0.25rem;
+  gap: 1.0rem;
   cursor: pointer;
   align-items: center;
 }

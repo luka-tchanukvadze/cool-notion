@@ -18,9 +18,9 @@ function TodoItem({ completed, id, title, toggleTodo, delteTodo }) {
       </label>
       <Button
         onClick={() => delteTodo(id)}
-        style={{ fontSize: "0.8rem" }}
+        style={{ fontSize: "1rem" }}
         variant="danger"
-        size="sm"
+        // size="lr"
       >
         Delete
       </Button>

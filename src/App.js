@@ -106,7 +106,7 @@ export default function App() {
               {/* <Navigation /> */}
               {/* <Bin /> */}
             </div>
-            {currentNoteId && notes.length > 0 && (
+            {
               <div className="header-container">
                 <Header
                   currentNote={findCurrentNote()}
@@ -131,7 +131,7 @@ export default function App() {
                   <Route path="/futurePlans" element={<FuturePlans />} />
                 </Routes>
               </div>
-            )}
+            }
           </Split>
         ) : (
           <Split sizes={[50, 50]} direction="horizontal" className="split">

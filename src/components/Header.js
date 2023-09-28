@@ -19,7 +19,7 @@ function Header(props) {
 
   return (
     <header className="header">
-      <div className="header-text" style={{}}>
+      <div className="header-text">
         {props.currentNote
           ? props.currentNote.body.split("\n")[0] || "Untitled"
           : "No Note Selected"}
@@ -28,8 +28,8 @@ function Header(props) {
         <svg
           style={{ cursor: "pointer" }}
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="22"
+          height="22"
           fill="#0D6EFD"
           className="bi bi-list"
           viewBox="0 0 16 16"

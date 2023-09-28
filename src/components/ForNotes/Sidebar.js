@@ -17,9 +17,6 @@ function Sidebar(props) {
           }`}
           onClick={() => props.setCurrentNoteId(note.id)}
         >
-          {/* <h4 className="text-snippet">
-            {note.body.split("\n")[0] || "Untitled"}
-          </h4> */}
           <Stack
             gap={3}
             style={{
@@ -49,14 +46,23 @@ function Sidebar(props) {
     <>
       <section className="pane sidebar">
         <div className="sidebar--header">
-          <h3 style={{ marginBottom: "0", color: "#0D6EFD" }}>Notes</h3>
+          <h3
+            style={{
+              marginBottom: "0",
+              color: "#0D6EFD",
+              fontSize: "2.1rem",
+              fontWeight: "530",
+            }}
+          >
+            Notes
+          </h3>
 
           <svg
             style={{ cursor: "pointer" }}
             onClick={props.newNote}
             xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="17"
+            width="22"
+            height="22"
             fill="#0D6EFD"
             className="bi bi-plus-lg"
             viewBox="0 0 16 16"
@@ -70,7 +76,11 @@ function Sidebar(props) {
         <div className="for-todo">{noteElements}</div>
         <Link to="/futurePlans" className="future-plans">
           <div className="future-plans-div">
-            <Button type="button" class="btn btn-xs btn-outline-secondary">
+            <Button
+              type="button"
+              class="btn btn-xs btn-outline-secondary"
+              style={{ fontSize: "1.1rem" }}
+            >
               Future Plans
             </Button>
           </div>

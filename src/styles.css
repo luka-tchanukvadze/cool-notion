@@ -40,10 +40,10 @@ button:focus {
   padding-bottom: 4rem;
   
 }
-
+/* 
 .sidebar--header > h3 {
-  font-size: 1.75rem;
-}
+  font-size: 2rem;
+} */
 
 .future-plans-div{
   display: flex;
@@ -82,10 +82,11 @@ button:focus {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.1rem;
+  line-height: 2.5rem;
 }
 
 .selected-note {
-  /* background-color: #4A4E74; */
   background-color: rgba(0, 170, 255, 0.1)
   ;
 }
@@ -193,15 +194,16 @@ button:focus {
 .header{
   display: flex;
   align-items: center;
-  height: 3rem;
+  height: 3.5rem;
   margin: 0;
+  margin-bottom: 2rem;
   padding: 0 1rem;
   box-shadow: 0rem .1rem 0rem rgba(0, 170, 255, 0.1);
 }
 
 .header-text{
   margin-right: auto;
-  font-size: 1rem;
+  font-size: 1.2rem;
   max-width: 12rem;
   white-space: nowrap;
   overflow: hidden;
