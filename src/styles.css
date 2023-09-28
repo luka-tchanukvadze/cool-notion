@@ -281,3 +281,14 @@ main.dark .toggler-dark {
 main.dark .toggler--slider {
   justify-content: flex-end;
 }
+
+/* ediotor */
+
+.app-main-note-preview h1{
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.app-main-note-preview p{
+  font-size: 1.3rem;
+}

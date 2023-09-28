@@ -1,9 +1,9 @@
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import { useState, useRef, useCallback, useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import TextareaAutosize from "react-textarea-autosize";
 
 function Editor(props) {
@@ -76,7 +76,7 @@ function Editor(props) {
 
   return (
     <>
-      <Container>
+      {/* <Container>
         <Row>
           <Col>
             <div className="app-main" style={{ minHeight: "120vh" }}>
@@ -144,7 +144,72 @@ function Editor(props) {
             </div>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
+      <div className="d-flex p-2 flex-column fluid">
+        <div className="app-main" style={{ minHeight: "120vh" }}>
+          <div className="app-main-note-edit">
+            {editing ? (
+              <div ref={textareaRef} onClick={handleOutsideClick}>
+                <TextareaAutosize
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "darkslategray",
+                    width: "100%",
+                  }}
+                  placeholder="Write your note here..."
+                  value={props.currentNote.body}
+                  onChange={(e) => {
+                    props.updateNote(e.target.value);
+                  }}
+                  onKeyDown={handleKeyPress}
+                />
+                {textAreas.map((label, index) => (
+                  <div key={index}>
+                    <TextareaAutosize
+                      onKeyDown={(e) =>
+                        handleKeyPress(e, label === "" ? index : undefined)
+                      }
+                      // rows={1}
+                      style={{
+                        backgroundColor: "transparent",
+                        color: "darkslategray",
+                        width: "100%",
+                      }}
+                      ref={lastTextarea}
+                      onChange={(e) => handleTextareaChange(e, index)}
+                      value={label}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              // <div onClick={toggleEditMode}>{props.currentNote.body}</div>
+              <>
+                <div
+                  onClick={toggleEditMode}
+                  className="app-main-note-preview d-flex flex-column mb-3"
+                  style={{
+                    whiteSpace: "pre-line",
+                    color: "darkslategray",
+                    // display: "flex",
+                    // backgroundColor: "red",
+                  }}
+                >
+                  <h1
+                    style={{ fontSize: "2rem", backgroundColor: "blue" }}
+                    className="preview-title"
+                  >
+                    {props.currentNote.title}
+                  </h1>
+                  <ReactMarkdown className="markdown-preview">
+                    {`${props.currentNote.body}\n${textAreas.join("\n")}`}
+                  </ReactMarkdown>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

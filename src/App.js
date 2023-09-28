@@ -24,9 +24,21 @@ export default function App() {
     (notes[0] && notes[0].id) || ""
   );
 
+  const [darkMode, setDarkMode] = useState(
+    () => JSON.parse(localStorage.getItem("dark")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("dark", JSON.stringify(darkMode));
+  }, [darkMode]);
+
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
+
+  function toggleDarkMode() {
+    setDarkMode((prevMode) => !prevMode);
+  }
 
   function createNewNote() {
     const newNote = {
@@ -75,12 +87,6 @@ export default function App() {
         return note.id === currentNoteId;
       }) || notes[0]
     );
-  }
-
-  const [darkMode, setDarkMode] = useState(false);
-
-  function toggleDarkMode() {
-    setDarkMode((prevMode) => !prevMode);
   }
 
   return (
