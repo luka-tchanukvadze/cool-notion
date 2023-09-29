@@ -41,11 +41,7 @@ function NewTodoForm({ onSubmit }) {
         />
       </div>
       {/* <button className="btn">Add</button> */}
-      <Button
-        onClick={handleSubmit}
-        type="button"
-        class="btn btn-xs btn-outline-secondary"
-      >
+      <Button onClick={handleSubmit} type="button" className="btn btn-xs ">
         Add
       </Button>
     </form>

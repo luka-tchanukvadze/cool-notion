@@ -12,7 +12,7 @@ function Bin() {
 
   return (
     <div className="bin-con" onClick={handleClick}>
-      <Button type="button" class="btn btn-outline-secondary">
+      <Button type="button" className="btn btn-outline-secondary">
         Recycle Bin
       </Button>
       {menu && (

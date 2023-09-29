@@ -19,6 +19,7 @@ export default function App() {
   const [notes, setNotes] = useState(
     () => JSON.parse(localStorage.getItem("notes")) || []
   );
+  console.log("n", notes);
 
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
@@ -67,7 +68,6 @@ export default function App() {
         const oldNote = oldNotes[i];
         if (oldNote.id === currentNoteId) {
           newArray.unshift({ ...oldNote, body: text });
-          newArray.unshift({ ...oldNote, body: text, textAreas: [text] });
         } else {
           newArray.push(oldNote);
         }

@@ -13,6 +13,7 @@ function Editor(props) {
   const [editing, setEditing] = useState(false);
   const textareaRef = useRef(null);
   const [newTextarea, setNewTextarea] = useState(""); // Track the content of the new textarea
+  const [activeTextArea, setActiveTextArea] = useState(0);
 
   const textAreas = props.currentNote.textAreas;
   const setTextAreas = props.updateTextarea;
@@ -145,7 +146,10 @@ function Editor(props) {
           </Col>
         </Row>
       </Container> */}
-      <div className="d-flex p-2 flex-column fluid">
+      <div
+        className="d-flex p-2 flex-column fluid"
+        style={{ margin: "0 5rem" }}
+      >
         <div className="app-main" style={{ minHeight: "120vh" }}>
           <div className="app-main-note-edit">
             {editing ? (
@@ -155,6 +159,10 @@ function Editor(props) {
                     backgroundColor: "transparent",
                     color: "darkslategray",
                     width: "100%",
+                    fontSize: "1.3rem",
+                    // outline: "none",
+                    // border: "none",
+                    // resize: "none",
                   }}
                   placeholder="Write your note here..."
                   value={props.currentNote.body}
@@ -166,15 +174,24 @@ function Editor(props) {
                 {textAreas.map((label, index) => (
                   <div key={index}>
                     <TextareaAutosize
-                      onKeyDown={(e) =>
-                        handleKeyPress(e, label === "" ? index : undefined)
-                      }
+                      onKeyDown={(e) => {
+                        setActiveTextArea(index);
+                        return handleKeyPress(
+                          e,
+                          label === "" ? index : undefined
+                        );
+                      }}
                       // rows={1}
                       style={{
                         backgroundColor: "transparent",
                         color: "darkslategray",
                         width: "100%",
+                        fontSize: "1.3rem",
+                        // outline: "none",
+                        // border: "none",
+                        // resize: "none",
                       }}
+                      // onFocus={() => setActiveTextArea(index)}
                       ref={lastTextarea}
                       onChange={(e) => handleTextareaChange(e, index)}
                       value={label}
@@ -202,8 +219,13 @@ function Editor(props) {
                     {props.currentNote.title}
                   </h1>
                   <ReactMarkdown className="markdown-preview">
-                    {`${props.currentNote.body}\n${textAreas.join("\n")}`}
+                    {props.currentNote.body}
                   </ReactMarkdown>
+                  {textAreas.map((label, index) => (
+                    <ReactMarkdown key={index} className="markdown-preview">
+                      {label}
+                    </ReactMarkdown>
+                  ))}
                 </div>
               </>
             )}
