@@ -138,6 +138,7 @@ function Editor(props) {
                     color: "darkslategray",
                     // display: "flex",
                     // backgroundColor: "red",
+                    wordWrap: "break-word",
                   }}
                 >
                   <h1
