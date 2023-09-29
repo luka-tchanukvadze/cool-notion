@@ -87,12 +87,15 @@ button:focus {
 }
 
 .selected-note {
+  /* background-color: teal
+  ; */
   background-color: rgba(0, 170, 255, 0.1)
   ;
 }
 
 .selected-note .text-snippet {
-  color: #0D6EFD;
+  color: darkslategray;
+  /* color: #0D6EFD; */
   font-weight: 700;
 }
 
@@ -291,4 +294,14 @@ main.dark .toggler--slider {
 
 .app-main-note-preview p{
   font-size: 1.3rem;
+}
+
+.editor-text{
+  margin: 0 5rem;
+}
+
+@media(max-width: 50rem){
+  .editor-text{
+    margin: 0 0.9rem;
+  }
 }

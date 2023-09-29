@@ -23,7 +23,8 @@ function Sidebar(props) {
               overflow: "hidden",
               whiteSpace: "nowrap",
               textOverflow: "ellipsis",
-              color: "#0D6EFD",
+              color: "teal",
+              // color: "#0D6EFD",
             }}
           >
             <div className="p-2 text-snippet">

@@ -10,7 +10,7 @@ function CreateNotes(props) {
         <h1 style={{ color: "#0D6EFD" }}>You have no notes</h1>
         <Button
           onClick={props.createNewNote}
-          className="btn btn-outline-secondary"
+          className="btn"
           style={{ fontSize: "1.1rem" }}
         >
           Create one now
