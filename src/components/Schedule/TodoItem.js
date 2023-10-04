@@ -1,7 +1,5 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-// import Form from "react-bootstrap/Form";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function TodoItem({ completed, id, title, toggleTodo, delteTodo }) {
@@ -24,9 +22,6 @@ function TodoItem({ completed, id, title, toggleTodo, delteTodo }) {
       >
         Delete
       </Button>
-      {/* <button onClick={() => delteTodo(id)} className="btn btn-danger">
-        Delete
-      </button> */}
     </li>
   );
 }

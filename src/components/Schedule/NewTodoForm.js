@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function NewTodoForm({ onSubmit }) {
@@ -40,7 +39,6 @@ function NewTodoForm({ onSubmit }) {
           placeholder="Plan Title"
         />
       </div>
-      {/* <button className="btn">Add</button> */}
       <Button onClick={handleSubmit} type="button" className="btn btn-xs ">
         Add
       </Button>

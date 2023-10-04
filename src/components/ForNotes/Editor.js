@@ -1,9 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import { useState, useRef, useCallback, useEffect } from "react";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
 import TextareaAutosize from "react-textarea-autosize";
 
 function Editor(props) {
@@ -136,8 +133,6 @@ function Editor(props) {
                   style={{
                     whiteSpace: "pre-line",
                     color: "darkslategray",
-                    // display: "flex",
-                    // backgroundColor: "red",
                     wordWrap: "break-word",
                   }}
                 >

@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import HeaderMenu from "./menus/HeaderMenu";
 // import { useState } from "react";
-import { ThreeBarsIcon } from "react-bootstrap";
+// import { ThreeBarsIcon } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Header(props) {
   const [menu, setMenu] = useState(false);
-
-  // const [myDarkMode, setMyDarkMode] = useState(props.darkMode);
-
-  // function myToggleDarkMode() {
-  //   props.setDarkMode((prevMode) => !prevMode);
-  // }
 
   function handleClick() {
     setMenu((prev) => !prev);
