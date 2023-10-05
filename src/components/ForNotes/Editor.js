@@ -80,15 +80,16 @@ function Editor(props) {
             {editing ? (
               <div ref={textareaRef} onClick={handleOutsideClick}>
                 <TextareaAutosize
-                  style={{
-                    backgroundColor: "transparent",
-                    color: "darkslategray",
-                    width: "100%",
-                    fontSize: "1.3rem",
-                    // outline: "none",
-                    border: "none",
-                    resize: "none",
-                  }}
+                  className="editor-css"
+                  // style={{
+                  //   backgroundColor: "transparent",
+                  //   color: "darkslategray",
+                  //   width: "100%",
+                  //   fontSize: "1.3rem",
+                  //   // outline: "none",
+                  //   border: "none",
+                  //   resize: "none",
+                  // }}
                   placeholder="Write your note here..."
                   value={props.currentNote.body}
                   onChange={(e) => {
@@ -99,6 +100,7 @@ function Editor(props) {
                 {textAreas.map((label, index) => (
                   <div key={index}>
                     <TextareaAutosize
+                      className="editor-css"
                       onKeyDown={(e) => {
                         setActiveTextArea(index);
                         return handleKeyPress(
@@ -107,15 +109,15 @@ function Editor(props) {
                         );
                       }}
                       // rows={1}
-                      style={{
-                        backgroundColor: "transparent",
-                        color: "darkslategray",
-                        width: "100%",
-                        fontSize: "1.3rem",
-                        // outline: "none",
-                        border: "none",
-                        resize: "none",
-                      }}
+                      // style={{
+                      // backgroundColor: "transparent",
+                      // color: "darkslategray",
+                      // width: "100%",
+                      // fontSize: "1.3rem",
+                      // // outline: "none",
+                      // border: "none",
+                      // resize: "none",
+                      // }}
                       // onFocus={() => setActiveTextArea(index)}
                       ref={lastTextarea}
                       onChange={(e) => handleTextareaChange(e, index)}
@@ -137,7 +139,7 @@ function Editor(props) {
                   }}
                 >
                   <h1
-                    style={{ fontSize: "2rem", backgroundColor: "blue" }}
+                    // style={{ fontSize: "2rem", backgroundColor: "blue" }}
                     className="preview-title"
                   >
                     {props.currentNote.title}

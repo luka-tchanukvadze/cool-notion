@@ -16,10 +16,6 @@
   gap: 0.7rem;
 }
 
-.btn {
-  padding: 0.38em 0.5em;
-}
-
 .new-item-form input::placeholder {
   text-align: center;
   color: rgb(0, 170, 255);
@@ -29,6 +25,7 @@
   font-size: 2rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .list {
@@ -102,4 +99,33 @@
 
 .list li:has(input:checked) label:hover::before {
   background: hsl(200, 100%, 30%);
+}
+
+.delete{
+  font-size: 1rem;
+  padding: 0.38em 0.5em;
+}
+
+
+@media(max-width: 27rem){
+  .header-todo {
+    font-size: 1.2rem;
+  }
+
+  .list li{
+    font-size: 1rem;
+    gap: .4rem;
+  }
+
+  .list{
+    margin-left: 0;
+  }
+
+  .delete{
+    font-size: 0.8rem;
+  }
+
+  .list li label {
+    gap: .4rem;
+  }
 }

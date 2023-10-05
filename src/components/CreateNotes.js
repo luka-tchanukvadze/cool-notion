@@ -7,7 +7,9 @@ function CreateNotes(props) {
   return (
     <Link to="/">
       <div className="no-notes">
-        <h1 style={{ color: "#0D6EFD" }}>You have no notes</h1>
+        <h1 style={{ color: "#0D6EFD", textAlign: "center" }}>
+          You have no notes
+        </h1>
         <Button
           onClick={props.createNewNote}
           className="btn"

@@ -47,16 +47,7 @@ function Sidebar(props) {
     <>
       <section className="pane sidebar">
         <div className="sidebar--header">
-          <h3
-            style={{
-              marginBottom: "0",
-              color: "#0D6EFD",
-              fontSize: "2.1rem",
-              fontWeight: "530",
-            }}
-          >
-            Notes
-          </h3>
+          <h3 className="notes">Notes</h3>
 
           <svg
             style={{ cursor: "pointer" }}
