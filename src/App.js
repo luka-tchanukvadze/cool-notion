@@ -106,9 +106,6 @@ export default function App() {
                 newNote={createNewNote}
                 deleteNote={deleteNote}
               />
-
-              {/* <Navigation /> */}
-              {/* <Bin /> */}
             </div>
             {
               <div className="header-container">
