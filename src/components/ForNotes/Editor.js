@@ -81,15 +81,15 @@ function Editor(props) {
               <div ref={textareaRef} onClick={handleOutsideClick}>
                 <TextareaAutosize
                   className="editor-css"
-                  // style={{
-                  //   backgroundColor: "transparent",
-                  //   color: "darkslategray",
-                  //   width: "100%",
-                  //   fontSize: "1.3rem",
-                  //   // outline: "none",
-                  //   border: "none",
-                  //   resize: "none",
-                  // }}
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "darkslategray",
+                    width: "100%",
+                    fontSize: "1.3rem",
+                    // outline: "none",
+                    border: "none",
+                    resize: "none",
+                  }}
                   placeholder="Write your note here..."
                   value={props.currentNote.body}
                   onChange={(e) => {
@@ -109,15 +109,15 @@ function Editor(props) {
                         );
                       }}
                       // rows={1}
-                      // style={{
-                      // backgroundColor: "transparent",
-                      // color: "darkslategray",
-                      // width: "100%",
-                      // fontSize: "1.3rem",
-                      // // outline: "none",
-                      // border: "none",
-                      // resize: "none",
-                      // }}
+                      style={{
+                        backgroundColor: "transparent",
+                        color: "darkslategray",
+                        width: "100%",
+                        fontSize: "1.3rem",
+                        // outline: "none",
+                        border: "none",
+                        resize: "none",
+                      }}
                       // onFocus={() => setActiveTextArea(index)}
                       ref={lastTextarea}
                       onChange={(e) => handleTextareaChange(e, index)}

@@ -307,15 +307,15 @@ main.dark .toggler--slider {
   margin: 0 5rem;
 }
 
-.editor-css{
+/* .editor-css{
   background-color: transparent;
   color: darkslategray;
   width: 100%;
   font-size: 1.3rem;
-  /* outline: none; */
+  outline: none;
   border: "none";
   resize: "none";
-}
+} */
 
 
 @media(max-width: 50rem){

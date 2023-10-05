@@ -25,7 +25,6 @@
   font-size: 2rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .list {
@@ -110,6 +109,7 @@
 @media(max-width: 27rem){
   .header-todo {
     font-size: 1.2rem;
+    /* text-align: center; */
   }
 
   .list li{
@@ -127,5 +127,11 @@
 
   .list li label {
     gap: .4rem;
+  }
+}
+
+@media(max-width: 36rem){
+  .header-todo {
+    text-align: center;
   }
 }
