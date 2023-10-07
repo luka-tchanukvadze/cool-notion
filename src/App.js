@@ -43,7 +43,7 @@ export default function App() {
     const newNote = {
       id: uuidv4(),
       body: "# Type your markdown note's title here",
-      textAreas: [],
+      textAreas: ["Untitled"],
     };
     setNotes((prevNotes) => [newNote, ...prevNotes]);
     setCurrentNoteId(newNote.id);
