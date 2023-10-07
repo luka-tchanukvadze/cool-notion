@@ -106,6 +106,7 @@ function Editor(props) {
                           fontSize: "1.3rem",
                           border: "none",
                           resize: "none",
+                          outline: "none",
                         }}
                         ref={ref}
                         value={label}
@@ -116,10 +117,7 @@ function Editor(props) {
                           )
                         }
                         onChange={(e) => {
-                          // es function zemot aitane tu ginda
-                          // if (i === 0) {
                           props.updateNote(e.target.value);
-                          // }
                           setTextareas(
                             textareas.map((v, index) =>
                               i === index ? e.target.value : v

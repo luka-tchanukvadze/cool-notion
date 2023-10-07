@@ -33,7 +33,9 @@ function Sidebar(props) {
                 width: "90%",
               }}
             >
-              <ReactMarkdown>{note.textAreas[0] || "Untitled"}</ReactMarkdown>
+              <ReactMarkdown className="for-overflow">
+                {note.textAreas[0] || "Untitled"}
+              </ReactMarkdown>
             </div>
           </Stack>
 

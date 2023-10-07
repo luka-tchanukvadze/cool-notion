@@ -15,7 +15,7 @@ function Header(props) {
   return (
     <header className="header">
       <div className="header-text">
-        <ReactMarkdown>
+        <ReactMarkdown className="for-overflow">
           {props.currentNote
             ? props.currentNote.textAreas[0] || "Untitled"
             : "No Note Selected"}

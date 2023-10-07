@@ -318,6 +318,19 @@ main.dark .toggler--slider {
   padding-left: 2rem;
 }
 
+.for-overflow p{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+.for-overflow h1, h2, h3, h4, h5, h6{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+
 @media(max-width: 50rem){
   .editor-text{
     margin: 0 0.9rem;
