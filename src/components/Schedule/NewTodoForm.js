@@ -17,6 +17,13 @@ function NewTodoForm({ onSubmit }) {
     setNewItem("");
   }
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSubmit(event);
+    }
+  };
+
   return (
     <form className="new-item-form">
       <div className="form-row">
@@ -32,6 +39,7 @@ function NewTodoForm({ onSubmit }) {
             backgroundColor: "#00aaff1a",
             borderColor: "#00AAFF",
           }}
+          onKeyDown={handleKeyPress}
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           type="text"
