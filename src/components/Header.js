@@ -3,6 +3,7 @@ import HeaderMenu from "./menus/HeaderMenu";
 // import { useState } from "react";
 // import { ThreeBarsIcon } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ReactMarkdown from "react-markdown";
 
 function Header(props) {
   const [menu, setMenu] = useState(false);
@@ -13,13 +14,15 @@ function Header(props) {
 
   return (
     <header className="header">
-      <div className="header-text">
-        {props.currentNote
-          ? props.currentNote.textAreas[0] || "Untitled"
-          : "No Note Selected"}
-        {/* {props.currentNote
-          ? props.currentNote.body.split("\n")[0] || "Untitled"
-          : "No Note Selected"} */}
+      <div
+        className="header-text"
+        // style={{ display: "flex", justifyContent: "center" }}
+      >
+        <ReactMarkdown>
+          {props.currentNote
+            ? props.currentNote.textAreas[0] || "Untitled"
+            : "No Note Selected"}
+        </ReactMarkdown>
       </div>
       <div className="for-header-menu" onClick={handleClick}>
         <svg

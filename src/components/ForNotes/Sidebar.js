@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ReactMarkdown from "react-markdown";
 
 function Sidebar(props) {
   const route = window.location.href.toString().split(window.location.host)[1];
@@ -28,8 +29,7 @@ function Sidebar(props) {
             }}
           >
             <div className="p-2 text-snippet">
-              {/* {note.body.split("\n")[0] || "Untitled"} */}
-              {note.textAreas[0] || "Untitled"}
+              <ReactMarkdown>{note.textAreas[0] || "Untitled"}</ReactMarkdown>
             </div>
           </Stack>
 
