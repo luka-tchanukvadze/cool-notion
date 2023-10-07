@@ -28,7 +28,8 @@ function Sidebar(props) {
             }}
           >
             <div className="p-2 text-snippet">
-              {note.body.split("\n")[0] || "Untitled"}
+              {/* {note.body.split("\n")[0] || "Untitled"} */}
+              {note.textAreas[0] || "Untitled"}
             </div>
           </Stack>
 
