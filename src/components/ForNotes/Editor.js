@@ -23,25 +23,6 @@ function Editor(props) {
   const handleKeyDown = (e) => {
     const { key } = e;
     if (key === "Enter") {
-      // if (activeTesg("boloa");
-      // let { selectionStart } = e.target;
-      // if (!selectionStart) selectionStart = 0;
-
-      // const newTexts = [...textareas];
-      // const cutOffText = newTexts[activeTextarea].slice(selectionStart);
-      // newTexts[activeTextarea] = newTexts[activeTextarea].slice(
-      //   0,
-      //   selectionStart
-      // );
-      // newTexts.splice(activeTextarea + 1, 0, cutOffText);
-      // setTextareas(newTexts);
-      // setActiveTextarea((i) => ++i);
-      // e.preventDefault();
-      // }
-      //  else {
-      //   setActiveTextarea((i) => ++i);
-      //   e.preventDefault();
-      // }
       let { selectionStart } = e.target;
       if (!selectionStart) selectionStart = 0;
 

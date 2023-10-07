@@ -95,6 +95,7 @@ button:focus {
   text-overflow: ellipsis;
   font-size: 1.1rem;
   line-height: 2.5rem;
+  margin-left: 1rem;
 }
 
 .selected-note {
@@ -133,6 +134,7 @@ button:focus {
   display: none;
   background: none;
   border: none;
+  margin-right: 1rem;
 }
 
 .title:hover > .delete-btn {
@@ -218,7 +220,8 @@ button:focus {
 .header-text{
   margin-right: auto;
   font-size: 1.2rem;
-  max-width: 12rem;
+  /* max-width: 12rem; */
+  max-width: 50%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -311,20 +314,24 @@ main.dark .toggler--slider {
   margin: 0 5rem;
 }
 
-/* .editor-css{
-  background-color: transparent;
-  color: darkslategray;
-  width: 100%;
-  font-size: 1.3rem;
-  outline: none;
-  border: "none";
-  resize: "none";
-} */
-
+.stack{
+  padding-left: 2rem;
+}
 
 @media(max-width: 50rem){
   .editor-text{
     margin: 0 0.9rem;
+  }
+
+}
+@media(max-width: 39rem){
+
+  .text-snippet{
+    margin: 0;
+  }
+
+  .delete-btn{
+    margin-right: 0;
   }
 }
 

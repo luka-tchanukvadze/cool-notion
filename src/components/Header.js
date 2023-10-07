@@ -14,10 +14,7 @@ function Header(props) {
 
   return (
     <header className="header">
-      <div
-        className="header-text"
-        // style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div className="header-text">
         <ReactMarkdown>
           {props.currentNote
             ? props.currentNote.textAreas[0] || "Untitled"

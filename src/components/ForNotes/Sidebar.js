@@ -25,10 +25,14 @@ function Sidebar(props) {
               whiteSpace: "nowrap",
               textOverflow: "ellipsis",
               color: "teal",
-              // color: "#0D6EFD",
             }}
           >
-            <div className="p-2 text-snippet">
+            <div
+              className="p-2 text-snippet"
+              style={{
+                width: "90%",
+              }}
+            >
               <ReactMarkdown>{note.textAreas[0] || "Untitled"}</ReactMarkdown>
             </div>
           </Stack>
